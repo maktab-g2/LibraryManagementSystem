@@ -1,8 +1,8 @@
-package ir.maktab.libraryManagementSystem.model.entity;
+package ir.maktab.libraryManagementSystem.data.model.entity;
 
 import java.util.Objects;
 
-public class User {
+public abstract class User {
     private  int id;
     private String name;
     private Account account;
