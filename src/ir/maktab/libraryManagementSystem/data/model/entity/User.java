@@ -3,16 +3,20 @@ package ir.maktab.libraryManagementSystem.data.model.entity;
 import java.util.Objects;
 
 public abstract class User {
-    private  int id;
+    private int id;
     private String name;
     private Account account;
 
-    public int getId() {
-        return id;
+    public User() {
+
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -47,7 +51,6 @@ public abstract class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", account=" + account +
                 '}';
