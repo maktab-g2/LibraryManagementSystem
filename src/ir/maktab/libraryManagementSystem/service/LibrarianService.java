@@ -11,12 +11,18 @@ public class LibrarianService {
         Book book = libraryDataBase.BorrowBook(bookTitle);
         if (book == null)
             return false;
+        if (user.getAccount().getNumberOfBorrowedBooks().size() > 4) {
+            ReservedBooks(book, user);
+            return false;
+        }
         user.getAccount().getNumberOfBorrowedBooks().add(book);
         return true;
     }
 
-    public boolean ReservedBooks(String bookTitle, User user) {
-        return true;
+
+    public void ReservedBooks(Book book, User user) {
+
+        user.getAccount().getNumberOfReservedBooks().add(book);
     }
 
     public boolean ReturnBooks(String bookTitle, User user) {
@@ -31,6 +37,22 @@ public class LibrarianService {
     }
 
     public boolean LostBooks(String bookTitle, User user) {
-        return true;
+        for (Book book : user.getAccount().getNumberOfBorrowedBooks()) {
+            if (book.getTitle().equals(bookTitle)) {
+                user.getAccount().getNumberOfBorrowedBooks().remove(book);
+                user.getAccount().getNumberOfLostBooks().add(book);
+                user.getAccount().setFineAmount(200000);
+                return true;
+            }
+        }
+        return false;
     }
+
+    public double ShowFineAmount(User user) {
+        return user.getAccount().getFineAmount();
+    }
+
+
 }
+
+

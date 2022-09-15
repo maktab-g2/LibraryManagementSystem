@@ -32,28 +32,30 @@ public class MainHandler {
                     else {
                         System.out.println("<------------- welcome ------------->" +
                                 "\n 1- BorrowedBooks" +
-                                "\n 2- ReservedBooks" +
-                                "\n 3- ReturnBooks" +
-                                "\n 4- LostBooks" +
-                                "\n 5- ShowFineAmount" +
-                                "\n 6- log out");
+                                "\n 2- ReturnBooks" +
+                                "\n 3- LostBooks" +
+                                "\n 4- ShowFineAmount" +
+                                "\n 5- log out");
                         switch (Integer.parseInt(scanner.nextLine())) {
                             case 1:
                                 System.out.println("enter the book title : ");
                                 if (librarianService.borrowedBook(scanner.nextLine(), user))
                                     System.out.println("done");
                                 break;
-                            case 2:
 
-                                break;
-                            case 3:
+                            case 2:
                                 System.out.println("enter the book title : ");
                                 if (librarianService.ReturnBooks(scanner.nextLine(), user))
                                     System.out.println("done");
                                 break;
-                            case 4:
+                            case 3:
+                                System.out.println("enter the book title : ");
+                                if (librarianService.LostBooks(scanner.nextLine(), user))
+                                    System.out.println("done");
                                 break;
-                            case 5:
+                            case 4:
+                                System.out.println("your amount is : " + librarianService.ShowFineAmount(user ));
+
                                 break;
                             default:
                                 break;
@@ -90,6 +92,7 @@ public class MainHandler {
                     System.out.println("enter a true value");
                     break;
             }
+
         }
     }
 
