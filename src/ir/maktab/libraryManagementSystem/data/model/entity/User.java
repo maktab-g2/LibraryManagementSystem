@@ -1,21 +1,22 @@
 package ir.maktab.libraryManagementSystem.data.model.entity;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public abstract class User {
-    private int id;
+    private String id;
     private String name;
     private Account account;
 
     public User() {
-
+        this.id = UUID.randomUUID().toString();
     }
 
     public User(String name) {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
