@@ -1,5 +1,7 @@
 package ir.maktab.libraryManagementSystem;
 
+import ir.maktab.libraryManagementSystem.data.dao.UserDao;
+import ir.maktab.libraryManagementSystem.data.model.entity.Account;
 import ir.maktab.libraryManagementSystem.data.model.entity.Staff;
 import ir.maktab.libraryManagementSystem.data.model.entity.Student;
 import ir.maktab.libraryManagementSystem.data.model.entity.User;
@@ -34,8 +36,7 @@ public class MainHandler {
                                 "\n 1- BorrowedBooks" +
                                 "\n 2- ReturnBooks" +
                                 "\n 3- LostBooks" +
-                                "\n 4- ShowFineAmount" +
-                                "\n 5- log out");
+                                "\n 4- ShowFineAmount");
                         switch (Integer.parseInt(scanner.nextLine())) {
                             case 1:
                                 System.out.println("enter the book title : ");
@@ -54,7 +55,7 @@ public class MainHandler {
                                     System.out.println("done");
                                 break;
                             case 4:
-                                System.out.println("your amount is : " + librarianService.ShowFineAmount(user ));
+                                System.out.println("your amount is : " + librarianService.ShowFineAmount(user));
 
                                 break;
                             default:
@@ -64,6 +65,7 @@ public class MainHandler {
                     answer = choseContinueOrNot();
                     break;
                 case 2:
+                    Account account=new Account();
                     System.out.println("chose your level: \n 1- Student \n 2- Staff");
                     switch (Integer.parseInt(scanner.nextLine())) {
                         case 1:
@@ -72,6 +74,14 @@ public class MainHandler {
                             student.setName(scanner.nextLine());
                             System.out.println("enter your classes : ");
                             student.setClasses(scanner.nextLine());
+                            System.out.println("enter your username : ");
+                            String username1 = scanner.nextLine();
+                            account.setUsername(username1);
+                            System.out.println("enter your password : ");
+                            String password1 = scanner.nextLine();
+                            account.setPassword(password1);
+                            student.setAccount(account);
+                            accountService.register(student);
                             break;
                         case 2:
                             Staff staff = new Staff();
@@ -79,6 +89,14 @@ public class MainHandler {
                             staff.setName(scanner.nextLine());
                             System.out.println("enter the dept : ");
                             staff.setDept(scanner.nextLine());
+                            System.out.println("enter your username : ");
+                            String username2 = scanner.nextLine();
+                            account.setUsername(username2);
+                            System.out.println("enter your password : ");
+                            String password2 = scanner.nextLine();
+                            account.setPassword(password2);
+                            staff.setAccount(account);
+                            accountService.register(staff);
                             break;
                         default:
                             System.out.println("enter a true value");
@@ -87,6 +105,7 @@ public class MainHandler {
                     answer = choseContinueOrNot();
                     break;
                 case 3:
+                    answer = "n";
                     break;
                 default:
                     System.out.println("enter a true value");

@@ -8,6 +8,16 @@ public class Book {
     private String Author;
     private String publication;
 
+    public Book() {
+    }
+
+    public Book(long isbn, String title, String author, String publication) {
+        this.isbn = isbn;
+        this.title = title;
+        Author = author;
+        this.publication = publication;
+    }
+
     public long getIsbn() {
         return isbn;
     }

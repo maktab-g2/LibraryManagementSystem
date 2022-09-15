@@ -1,15 +1,16 @@
 package ir.maktab.libraryManagementSystem.data.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Account {
     private String username;
     private String password;
-    private List<Book> numberOfBorrowedBooks;
-    private List<Book> numberOfReservedBooks;
-    private List<Book> numberOfReturnBooks;
-    private List<Book> numberOfLostBooks;
+    private List<Book> numberOfBorrowedBooks = new ArrayList<>();
+    private List<Book> numberOfReservedBooks = new ArrayList<>();
+    private List<Book> numberOfReturnBooks = new ArrayList<>();
+    private List<Book> numberOfLostBooks = new ArrayList<>();
     private double fineAmount;
 
     public String getUsername() {
